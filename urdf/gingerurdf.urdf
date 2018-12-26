@@ -1575,7 +1575,7 @@
     <child
       link="RIght_Shoulder_X_Link" />
     <axis
-      xyz="0 0 1" />
+      xyz="1 0 0" />
   </joint>
   <link
     name="Right_Shoulder_Y_Link">
