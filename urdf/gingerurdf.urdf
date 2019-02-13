@@ -1525,7 +1525,7 @@
       xyz="0 -0.000162157164103371 -0.999999986852527" />
   </joint>
   <link
-    name="RIght_Shoulder_X_Link">
+    name="Right_Shoulder_X_Link">
     <inertial>
       <origin
         xyz="0 0 0"
@@ -1546,7 +1546,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://gingerurdf/meshes/RIght_Shoulder_X_Link.STL" />
+          filename="package://gingerurdf/meshes/Right_Shoulder_X_Link.STL" />
       </geometry>
       <material
         name="">
@@ -1560,12 +1560,12 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://gingerurdf/meshes/RIght_Shoulder_X_Link.STL" />
+          filename="package://gingerurdf/meshes/Right_Shoulder_X_Link.STL" />
       </geometry>
     </collision>
   </link>
   <joint
-    name="RIght_Shoulder__X"
+    name="Right_Shoulder_X"
     type="continuous">
     <origin
       xyz="-0.167642819137822 0.257434208389716 -0.0153204612848374"
@@ -1573,7 +1573,7 @@
     <parent
       link="Back_Y_Link" />
     <child
-      link="RIght_Shoulder_X_Link" />
+      link="Right_Shoulder_X_Link" />
     <axis
       xyz="1 0 0" />
   </joint>
@@ -1624,7 +1624,7 @@
       xyz="0 0 0"
       rpy="0 0 9.22447382158831E-33" />
     <parent
-      link="RIght_Shoulder_X_Link" />
+      link="Right_Shoulder_X_Link" />
     <child
       link="Right_Shoulder_Y_Link" />
     <axis
