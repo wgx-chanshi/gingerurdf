@@ -665,7 +665,7 @@
     <limit
       effort="30" velocity="1.0" lower="-1.61512768979555" upper="0.6770132168486" />
     <safety_controller
-      soft_lower_limit="-1.570796" soft_upper_limit="-0.017500" k_position="0" k_velocity="0" />
+      soft_lower_limit="-1.570796" soft_upper_limit="0.017500" k_position="0" k_velocity="0" />
   </joint>
   <link
     name="Left_Wrist_Z_Link">
@@ -1862,7 +1862,7 @@
     <limit
       effort="30" velocity="1.0" lower="-1.61512768979555" upper="0.6770132168486" />
     <safety_controller
-      soft_lower_limit="-1.570796" soft_upper_limit="-0.017500" k_position="0" k_velocity="0" />
+      soft_lower_limit="-1.570796" soft_upper_limit="0.017500" k_position="0" k_velocity="0" />
   </joint>
   <link
     name="Right_Wrist_Z_Link">
