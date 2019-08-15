@@ -260,7 +260,7 @@
     <limit
       effort="30" velocity="1.0" lower="-0.78190750489346" upper="0.991347015132779" />
     <safety_controller
-      soft_lower_limit="-0.781907" soft_upper_limit="0.991347" k_position="0" k_velocity="0" />
+      soft_lower_limit="-0.261799" soft_upper_limit="0.261799" k_position="0" k_velocity="0" />
   </joint>
 
   <link
@@ -333,7 +333,7 @@
     <limit
       effort="30" velocity="1.0" lower="-0.720820981073658" upper="0.720820981073658" />
     <safety_controller
-      soft_lower_limit="-0.720820" soft_upper_limit="0.720820" k_position="0" k_velocity="0" />
+      soft_lower_limit="-0.261799" soft_upper_limit="0.261799" k_position="0" k_velocity="0" />
   </joint>
 
   <link
