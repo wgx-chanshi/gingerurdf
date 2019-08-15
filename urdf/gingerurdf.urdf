@@ -1,7 +1,22 @@
 <robot
   name="gingerurdf">
+
   <link
     name="base_link">
+    <inertial>
+      <origin
+        xyz="2.61752017675272E-06 -0.165725126916168 0.176971895173863"
+        rpy="0 0 0" />
+      <mass
+        value="36.8100641165154" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
     <visual>
       <origin
         xyz="0 0 0"
@@ -26,6 +41,8 @@
       </geometry>
     </collision>
   </link>
+
+
   <link
     name="Knee_Link">
     <inertial>
@@ -43,9 +60,15 @@
         izz="0.211201747394794" />
     </inertial>
     <visual>
+
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="0 2.428103804 0" />
+
+      <!--<origin
+        xyz="0 0 0"
+        rpy="0 0 0" />-->
+
       <geometry>
         <mesh
           filename="package://gingerurdf/meshes/Knee_Link.STL" />
@@ -66,23 +89,33 @@
       </geometry>
     </collision>
   </link>
+
+
   <joint
     name="Knee"
     type="revolute">
+
+    <!--<origin
+      xyz="0 -0.163753578960292 0.422732937784996"
+      rpy="1.5707963267949 0.0562043157596906 -2.28428512229131" />-->
+
     <origin
       xyz="0 -0.163753578960292 0.422732937784996"
-      rpy="1.5707963267949 0.0562043157596906 -2.28428512229131" />
+      rpy="1.5707963267949 0 1.5707963267949" />
+
     <parent
       link="base_link" />
     <child
       link="Knee_Link" />
     <axis
-      xyz="-0.653442120633779 -0.0367649880485583 -0.756083150609388" />
+      xyz="0 0 1" />
     <limit
       effort="30" velocity="1.0" lower="-0.62779493194236" upper="0.539830337641846" />
     <safety_controller
-      soft_lower_limit="0.0" soft_upper_limit="0.0" k_position="0" k_velocity="0" />
+      soft_lower_limit="-0.627794" soft_upper_limit="0.539830" k_position="0" k_velocity="0" />
   </joint>
+
+  
   <link
     name="Back_Z_Link">
     <inertial>
@@ -100,9 +133,14 @@
         izz="0.00155644818843089" />
     </inertial>
     <visual>
+      <!--<origin
+        xyz="0 0 0"
+        rpy="0 0 0" />-->
+
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="1.5707963267949 0 -1.5707963267949" />
+
       <geometry>
         <mesh
           filename="package://gingerurdf/meshes/Back_Z_Link.STL" />
@@ -123,23 +161,34 @@
       </geometry>
     </collision>
   </link>
+  
   <joint
     name="Back_Z"
     type="revolute">
-    <origin
+    <!--<origin
       xyz="-0.0258402466955493 0.459273873742399 0"
-      rpy="3.14159265358979 0.857307531298485 -3.0853883378301" />
+      rpy="3.14159265358979 0.857307531298485 -3.0853883378301" />-->
+
+    <!--<origin
+      xyz="-0.0258402466955493 0.459273873742399 0"
+      rpy="0 -1.5707963267949 0" />-->
+
+    <origin
+      xyz="0.0258402466955493 0.459273873742399 0.015"
+      rpy="-1.5707963267949 0 0" />
+
     <parent
       link="Knee_Link" />
     <child
       link="Back_Z_Link" />
     <axis
-      xyz="0 1 0" />
+      xyz="0 0 1" />
     <limit
       effort="30" velocity="1.0" lower="-1.69488923661169" upper="1.69488923661169" />
     <safety_controller
       soft_lower_limit="-1.570796" soft_upper_limit="1.570796" k_position="0" k_velocity="0" />
   </joint>
+
   <link
     name="Back_X_Link">
     <inertial>
@@ -157,9 +206,14 @@
         izz="1.14228478989141E-07" />
     </inertial>
     <visual>
+      <!--<origin
+        xyz="0 0 0"
+        rpy="0 0 0" />-->
+
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="0 -1.5707963267949 -1.5707963267949" />
+
       <geometry>
         <mesh
           filename="package://gingerurdf/meshes/Back_X_Link.STL" />
@@ -180,23 +234,35 @@
       </geometry>
     </collision>
   </link>
+
   <joint
     name="Back_X"
     type="revolute">
-    <origin
+
+    <!--<origin
       xyz="0 0 0"
-      rpy="0 0 0" />
+      rpy="0 0 0" />-->
+
+    <!--<origin
+      xyz="0 0 0"
+      rpy="1.5707963267949 0 -1.5707963267949" />--> 
+
+     <origin
+      xyz="0 0 0"
+      rpy="0 -1.5707963267949 1.5707963267949" />
+
     <parent
       link="Back_Z_Link" />
     <child
       link="Back_X_Link" />
     <axis
-      xyz="1 0 0" />
+      xyz="0 0 1" />
     <limit
       effort="30" velocity="1.0" lower="-0.78190750489346" upper="0.991347015132779" />
     <safety_controller
-      soft_lower_limit="-0.261799" soft_upper_limit="0.261799" k_position="0" k_velocity="0" />
+      soft_lower_limit="-0.781907" soft_upper_limit="0.991347" k_position="0" k_velocity="0" />
   </joint>
+
   <link
     name="Back_Y_Link">
     <inertial>
@@ -214,9 +280,14 @@
         izz="0" />
     </inertial>
     <visual>
+      <!--<origin
+        xyz="0 0 0"
+        rpy="0 0 0" />-->
+
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="3.141592654 0 0" />
+
       <geometry>
         <mesh
           filename="package://gingerurdf/meshes/Back_Y_Link.STL" />
@@ -237,12 +308,22 @@
       </geometry>
     </collision>
   </link>
+
   <joint
     name="Back_Y"
     type="revolute">
-    <origin
+    <!--<origin
       xyz="0 0.104999999999997 0"
-      rpy="0 0 0" />
+      rpy="0 0 0" />-->
+
+    <!--<origin
+      xyz="0.104999999999997 0 0"
+      rpy="0 -1.5707963267949 -1.5707963267949" />-->
+
+    <origin
+      xyz="0.104999999999997 0 0"
+      rpy="0 -1.5707963267949 1.5707963267949" />
+
     <parent
       link="Back_X_Link" />
     <child
@@ -252,8 +333,9 @@
     <limit
       effort="30" velocity="1.0" lower="-0.720820981073658" upper="0.720820981073658" />
     <safety_controller
-      soft_lower_limit="-0.261799" soft_upper_limit="0.261799" k_position="0" k_velocity="0" />
+      soft_lower_limit="-0.720820" soft_upper_limit="0.720820" k_position="0" k_velocity="0" />
   </joint>
+
   <link
     name="Neck_Z_Link">
     <inertial>
@@ -271,9 +353,14 @@
         izz="1.04884810136062E-05" />
     </inertial>
     <visual>
-      <origin
+      <!--<origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="0 0 0" />-->
+
+        <origin
+        xyz="0 0 0"
+        rpy="1.5707963267949 0 1.5707963267949" />
+
       <geometry>
         <mesh
           filename="package://gingerurdf/meshes/Neck_Z_Link.STL" />
@@ -294,23 +381,35 @@
       </geometry>
     </collision>
   </link>
+
   <joint
     name="Neck_Z"
     type="revolute">
-    <origin
+    <!--<origin
       xyz="0 0.37820748993899 0.00368296133076892"
-      rpy="0 0 0" />
+      rpy="0 0 0" />-->
+
+    <!--<origin
+      xyz="0 -0.37820748993899 0"
+      rpy="3.141592654 0 0" />-->
+    
+    <origin
+      xyz="0 -0.37820748993899 0"
+      rpy="0 1.5707963267949 -1.5707963267949" />
+
+
     <parent
       link="Back_Y_Link" />
     <child
       link="Neck_Z_Link" />
     <axis
-      xyz="0 1 0" />
+      xyz="0 0 1" />
     <limit
       effort="30" velocity="1.0" lower="-1.5707963267949" upper="1.5707963267949" />
     <safety_controller
       soft_lower_limit="-1.570796" soft_upper_limit="1.570796" k_position="0" k_velocity="0" />
   </joint>
+
   <link
     name="Neck_X_Link">
     <inertial>
@@ -328,9 +427,14 @@
         izz="1.47003960675818E-05" />
     </inertial>
     <visual>
+      <!--<origin
+        xyz="0 0 0"
+        rpy="0 0 0" />-->
+
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="0 -1.5707963267949 -1.5707963267949" />
+
       <geometry>
         <mesh
           filename="package://gingerurdf/meshes/Neck_X_Link.STL" />
@@ -351,23 +455,34 @@
       </geometry>
     </collision>
   </link>
+
   <joint
     name="Neck_X"
     type="revolute">
+    <!--<origin
+      xyz="0 0 0"
+      rpy="0 0 0" />-->
+
+    <!--<origin
+      xyz="0 0 0"
+      rpy="1.5707963267949 0 1.5707963267949" />-->
+
     <origin
       xyz="0 0 0"
-      rpy="0 0 0" />
+      rpy="0 -1.5707963267949 -1.5707963267949" />
+
     <parent
       link="Neck_Z_Link" />
     <child
       link="Neck_X_Link" />
     <axis
-      xyz="1 0 0" />
+      xyz="0 0 1" />
     <limit
       effort="30" velocity="1.0" lower="-0.803898653468588" upper="0.417133691226645" />
     <safety_controller
       soft_lower_limit="-0.803898" soft_upper_limit="0.417133" k_position="0" k_velocity="0" />
   </joint>
+
   <link
     name="Head_Y_Link">
     <inertial>
@@ -385,9 +500,14 @@
         izz="0.000221694213130154" />
     </inertial>
     <visual>
+      <!--<origin
+        xyz="0 0 0"
+        rpy="0 0 0" />-->
+
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="0 3.141592654 0" />
+
       <geometry>
         <mesh
           filename="package://gingerurdf/meshes/Head_Y_Link.STL" />
@@ -408,12 +528,22 @@
       </geometry>
     </collision>
   </link>
+
   <joint
     name="Head_Y"
     type="revolute">
-    <origin
+    <!--<origin
       xyz="0 0.0609748006263349 0.000155084351385615"
-      rpy="0 0 0" />
+      rpy="0 0 0" />-->
+
+    <!--<origin
+      xyz="0.0609748006263349 0 0"
+      rpy="0 -1.5707963267949 -1.5707963267949" />-->
+
+    <origin
+      xyz="0.0609748006263349 0 0"
+      rpy="0 1.5707963267949 -1.5707963267949" />
+
     <parent
       link="Neck_X_Link" />
     <child
@@ -425,6 +555,7 @@
     <safety_controller
       soft_lower_limit="-0.441917" soft_upper_limit="0.441917" k_position="0" k_velocity="0" />
   </joint>
+
   <link
     name="Left_Shoulder_X_Link">
     <inertial>
@@ -445,6 +576,7 @@
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
+
       <geometry>
         <mesh
           filename="package://gingerurdf/meshes/Left_Shoulder_X_Link.STL" />
@@ -465,23 +597,34 @@
       </geometry>
     </collision>
   </link>
+
   <joint
     name="Left_Shoulder_X"
     type="revolute">
-    <origin
+    <!--<origin
       xyz="0.167642819139667 0.257434208387602 -0.0153204612848375"
-      rpy="3.14159265358979 0 -2.79254817387005" />
+      rpy="3.14159265358979 0 -2.79254817387005" />-->
+
+    <!--<origin
+      xyz="0.167642819139667 -0.257434208387602 0.0153204612848375"
+      rpy="0 0 2.79254817387005" />-->
+
+    <origin
+      xyz="0.167642819139667 -0.257434208387602 0.0153204612848375"
+      rpy="1.5707963267949 0 -1.919840807" />
+
     <parent
       link="Back_Y_Link" />
     <child
       link="Left_Shoulder_X_Link" />
     <axis
-      xyz="-1 0 0" />
+      xyz="0 0 -1" />
     <limit
       effort="30" velocity="1.0" lower="-3.14159265358979" upper="3.14159265358979" />
     <safety_controller
       soft_lower_limit="-2.26" soft_upper_limit="0.7854" k_position="0" k_velocity="0" />
   </joint>
+
   <link
     name="Left_Shoulder_Y_Link">
     <inertial>
@@ -499,9 +642,14 @@
         izz="0.000105589747799257" />
     </inertial>
     <visual>
+      <!--<origin
+        xyz="0 0 0"
+        rpy="0 0 0" />-->
+
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="0 0 2.79254817387005" />
+
       <geometry>
         <mesh
           filename="package://gingerurdf/meshes/Left_Shoulder_Y_Link.STL" />
@@ -522,12 +670,23 @@
       </geometry>
     </collision>
   </link>
+
+
   <joint
     name="Left_Shoulder_Y"
     type="revolute">
+    <!--<origin
+      xyz="0 0 0"
+      rpy="0 0 0" />-->
+
+    <!--<origin
+      xyz="0 0 0"
+      rpy="0 -1.5707963267949 -1.5707963267949" />-->
+
     <origin
       xyz="0 0 0"
-      rpy="0 0 0" />
+      rpy="-1.5707963267949 1.919840807 0" />
+
     <parent
       link="Left_Shoulder_X_Link" />
     <child
@@ -537,8 +696,9 @@
     <limit
       effort="30" velocity="1.0" lower="-0.0162315620435473" upper="1.73084301920278" />
     <safety_controller
-      soft_lower_limit="-0.016231" soft_upper_limit="1.309000" k_position="0" k_velocity="0" />
+      soft_lower_limit="-0.016231" soft_upper_limit="1.730843" k_position="0" k_velocity="0" />
   </joint>
+
   <link
     name="Left_Elbow_Z_Link">
     <inertial>
@@ -559,6 +719,11 @@
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
+
+      <!--<origin
+        xyz="0 0 0"
+        rpy="-1.5707963267949 0 -1.5707963267949" />-->
+
       <geometry>
         <mesh
           filename="package://gingerurdf/meshes/Left_Elbow_Z_Link.STL" />
@@ -579,23 +744,34 @@
       </geometry>
     </collision>
   </link>
+
   <joint
     name="Left_Elbow_Z"
     type="revolute">
-    <origin
+    <!--<origin
       xyz="0.030674616894137 -0.227909089065574 0"
-      rpy="3.14159265358979 0 -2.79254817387005" />
+      rpy="3.14159265358979 0 -2.79254817387005" />7.6654578425 --> 
+
+    <!--<origin
+      xyz="0.0491247882 0.2246558260 0"
+      rpy="3.14159265358979 0 0" />-->
+
+    <origin
+      xyz="0.0491247882 0.2246558260 0"
+      rpy="0 1.5707963267949 1.5707963267949" />
+
     <parent
       link="Left_Shoulder_Y_Link" />
     <child
       link="Left_Elbow_Z_Link" />
     <axis
-      xyz="0 -1 0" />
+      xyz="0 0 1" />
     <limit
       effort="30" velocity="1.0" lower="-1.5707963267949" upper="1.5707963267949" />
     <safety_controller
       soft_lower_limit="-1.570796" soft_upper_limit="0.785398" k_position="0" k_velocity="0" />
   </joint>
+
   <link
     name="Left_Elbow_X_Link">
     <inertial>
@@ -613,9 +789,14 @@
         izz="6.71299662821976E-06" />
     </inertial>
     <visual>
+      <!--<origin
+        xyz="0 0 0"
+        rpy="0 0 0" />-->
+
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="0 -1.5707963267949 3.14159265358979" />
+
       <geometry>
         <mesh
           filename="package://gingerurdf/meshes/Left_Elbow_X_Link.STL" />
@@ -636,23 +817,34 @@
       </geometry>
     </collision>
   </link>
+
   <joint
     name="Left_Elbow_X"
     type="revolute">
+    <!--<origin
+      xyz="0 0 0"
+      rpy="0 0 0" />-->
+
+    <!--<origin
+      xyz="0 0 0"
+      rpy="-1.5707963267949 0 -1.5707963267949" />-->
+
     <origin
       xyz="0 0 0"
-      rpy="0 0 0" />
+      rpy="1.5707963267949 0 0" />  
+
     <parent
       link="Left_Elbow_Z_Link" />
     <child
       link="Left_Elbow_X_Link" />
     <axis
-      xyz="1 0 0" />
+      xyz="0 0 1" />
     <limit
       effort="30" velocity="1.0" lower="-1.61512768979555" upper="0.6770132168486" />
     <safety_controller
       soft_lower_limit="-1.570796" soft_upper_limit="0.017500" k_position="0" k_velocity="0" />
   </joint>
+
   <link
     name="Left_Wrist_Z_Link">
     <inertial>
@@ -673,6 +865,11 @@
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
+
+      <!--<origin
+        xyz="0 0 0"
+        rpy="-1.5707963267949 0 -1.5707963267949" />-->
+
       <geometry>
         <mesh
           filename="package://gingerurdf/meshes/Left_Wrist_Z_Link.STL" />
@@ -693,23 +890,34 @@
       </geometry>
     </collision>
   </link>
+
   <joint
     name="Left_Wrist_Z"
     type="revolute">
-    <origin
+    <!--<origin
       xyz="-0.000196700073873679 -0.209557803287771 0.000545980735265489"
-      rpy="0 0 0" />
+      rpy="0 0 0" />-->
+
+    <!--<origin
+      xyz="0 0.209557803287771 0"
+      rpy="0 -1.5707963267949 3.14159265358979" />-->
+
+    <origin
+      xyz="0 0.209557803287771 0"
+      rpy="-1.5707963267949 0 0" />
+
     <parent
       link="Left_Elbow_X_Link" />
     <child
       link="Left_Wrist_Z_Link" />
     <axis
-      xyz="0 -1 0" />
+      xyz="0 0 1" />
     <limit
       effort="30" velocity="1.0" lower="-1.5707963267949" upper="1.5707963267949" />
     <safety_controller
       soft_lower_limit="-1.570796" soft_upper_limit="1.570796" k_position="0" k_velocity="0" />
   </joint>
+
   <link
     name="Left_Wrist_X_Link">
     <inertial>
@@ -727,9 +935,14 @@
         izz="0" />
     </inertial>
     <visual>
+      <!--<origin
+        xyz="0 0 0"
+        rpy="0 0 0" />-->
+
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="0 -1.5707963267949 1.5707963267949" />
+
       <geometry>
         <mesh
           filename="package://gingerurdf/meshes/Left_Wrist_X_Link.STL" />
@@ -750,23 +963,30 @@
       </geometry>
     </collision>
   </link>
+
   <joint
     name="Left_Wrist_X"
     type="revolute">
+    <!--<origin
+      xyz="0 0 0"
+      rpy="0 0 0" />-->
+
     <origin
       xyz="0 0 0"
-      rpy="0 0 0" />
+      rpy="1.5707963267949 -1.5707963267949 0" />
+
     <parent
       link="Left_Wrist_Z_Link" />
     <child
       link="Left_Wrist_X_Link" />
     <axis
-      xyz="1 0 0" />
+      xyz="0 0 1" />
     <limit
       effort="30" velocity="1.0" lower="-0.738274273593601" upper="0.738274273593601" />
     <safety_controller
       soft_lower_limit="-0.738274" soft_upper_limit="0.738274" k_position="0" k_velocity="0" />
   </joint>
+
   <link
     name="Left_Wrist_Y_Link">
     <inertial>
@@ -807,12 +1027,18 @@
       </geometry>
     </collision>
   </link>
+
   <joint
     name="Left_Wrist_Y"
     type="revolute">
+    <!--<origin
+      xyz="0 0 0"
+      rpy="0 0 0" />-->
+
     <origin
       xyz="0 0 0"
-      rpy="0 0 0" />
+      rpy="0 -1.5707963267949 1.5707963267949" />
+
     <parent
       link="Left_Wrist_X_Link" />
     <child
@@ -824,6 +1050,8 @@
     <safety_controller
       soft_lower_limit="-0.523598" soft_upper_limit="0.523598" k_position="0" k_velocity="0" />
   </joint>
+  
+
   <link
     name="Left_1_1_Link">
     <inertial>
@@ -864,12 +1092,15 @@
       </geometry>
     </collision>
   </link>
+
   <joint
     name="Left_1_1"
     type="revolute">
     <origin
       xyz="-0.0421965979105676 -0.0941606527701363 0.0317642107824706"
       rpy="-3.04360255528965 0.709745009740312 0.0639720600136326" />
+
+
     <parent
       link="Left_Wrist_Y_Link" />
     <child
@@ -938,6 +1169,7 @@
     <safety_controller
       soft_lower_limit="0" soft_upper_limit="1.256637" k_position="0" k_velocity="0" />
   </joint>
+
   <link
     name="Left_2_1_Link">
     <inertial>
@@ -978,6 +1210,8 @@
       </geometry>
     </collision>
   </link>
+
+
   <joint
     name="Left_2_1"
     type="revolute">
@@ -995,6 +1229,8 @@
     <safety_controller
       soft_lower_limit="0" soft_upper_limit="1.256637" k_position="0" k_velocity="0" />
   </joint>
+
+
   <link
     name="Left_2_2_Link">
     <inertial>
@@ -1622,6 +1858,26 @@
     <safety_controller
       soft_lower_limit="0" soft_upper_limit="1.256637" k_position="0" k_velocity="0" />
   </joint>
+
+
+
+
+
+  <!-- **************The right shoulder*************** -->
+  <!-- **************The right shoulder*************** -->
+  <!-- **************The right shoulder*************** -->
+  <!-- **************The right shoulder*************** -->
+  <!-- **************The right shoulder*************** -->
+  <!-- **************The right shoulder*************** -->
+  <!-- **************The right shoulder*************** -->
+  <!-- **************The right shoulder*************** -->
+
+
+
+
+
+
+
   <link
     name="Right_Shoulder_X_Link">
     <inertial>
@@ -1662,23 +1918,35 @@
       </geometry>
     </collision>
   </link>
+
   <joint
     name="Right_Shoulder_X"
     type="revolute">
-    <origin
+    <!--<origin
       xyz="-0.167642819137822 0.257434208389716 -0.0153204612848374"
-      rpy="5.79452944416604E-17 -1.59192802633449E-16 -0.349087221077984" />
+      rpy="5.79452944416604E-17 -1.59192802633449E-16 -0.349087221077984" />-->
+
+    <!--<origin
+      xyz="-0.167642819137822 -0.257434208389716 0.0153204612848374"
+      rpy="3.14159265358979 0 0.349087221077984" />-->
+
+    <origin
+      xyz="-0.167642819137822 -0.257434208389716 0.0153204612848374"
+      rpy="-1.5707963267949 0 -1.221709106" />
+
     <parent
       link="Back_Y_Link" />
     <child
       link="Right_Shoulder_X_Link" />
     <axis
-      xyz="1 0 0" />
+      xyz="0 0 1" />
     <limit
       effort="30" velocity="1.0" lower="-3.14159265358979" upper="3.14159265358979" />
     <safety_controller
       soft_lower_limit="-2.26" soft_upper_limit="0.7854" k_position="0" k_velocity="0" />
   </joint>
+
+
   <link
     name="Right_Shoulder_Y_Link">
     <inertial>
@@ -1696,9 +1964,14 @@
         izz="0.000105961553569167" />
     </inertial>
     <visual>
+      <!--<origin
+        xyz="0 0 0"
+        rpy="0 0 0" />-->
+
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="3.14159265358979 0 0.349087221077984" />
+
       <geometry>
         <mesh
           filename="package://gingerurdf/meshes/Right_Shoulder_Y_Link.STL" />
@@ -1719,12 +1992,23 @@
       </geometry>
     </collision>
   </link>
+
   <joint
     name="Right_Shoulder_Y"
     type="revolute">
+    <!--<origin
+      xyz="0 0 0"
+      rpy="0 0 9.22447382158831E-33" />-->
+
+    <!--<origin
+      xyz="0 0 0"
+      rpy="-1.5707963267949 -0.926310048 0" />0.9935735-->
+
     <origin
       xyz="0 0 0"
-      rpy="0 0 9.22447382158831E-33" />
+      rpy="1.5707963267949 -1.221709106 0" />
+
+
     <parent
       link="Right_Shoulder_X_Link" />
     <child
@@ -1734,8 +2018,10 @@
     <limit
       effort="30" velocity="1.0" lower="-1.73084301920278" upper="0.0162315620435473" />
     <safety_controller
-      soft_lower_limit="-1.309000" soft_upper_limit="0.016231" k_position="0" k_velocity="0" />
+      soft_lower_limit="-1.730843" soft_upper_limit="0.016231" k_position="0" k_velocity="0" />
   </joint>
+
+
   <link
     name="Right_Elbow_Z_Link">
     <inertial>
@@ -1776,23 +2062,36 @@
       </geometry>
     </collision>
   </link>
+
+
   <joint
     name="Right_Elbow_Z"
     type="revolute">
-    <origin
+    <!--<origin
       xyz="0.0308685949686061 -0.227838852240102 0"
-      rpy="1.15825157085799E-32 1.69410759865549E-16 0.349087221077984" />
+      rpy="1.15825157085799E-32 1.69410759865549E-16 0.349087221077984" />-->
+
+    <!--<origin
+      xyz="0.0491247882 -0.2246558260 0"
+      rpy="0 3.14159265358979 0" />-->
+
+    <origin
+      xyz="-0.0491247882 0.2246558260 0"
+      rpy="0 1.5707963267949 1.5707963267949" /> 
+
     <parent
       link="Right_Shoulder_Y_Link" />
     <child
       link="Right_Elbow_Z_Link" />
     <axis
-      xyz="0 -1 0" />
+      xyz="0 0 1" />
     <limit
       effort="30" velocity="1.0" lower="-1.5707963267949" upper="1.5707963267949" />
     <safety_controller
       soft_lower_limit="-0.785398" soft_upper_limit="1.570796" k_position="0" k_velocity="0" />
   </joint>
+
+
   <link
     name="Right_Elbow_X_Link">
     <inertial>
@@ -1810,9 +2109,13 @@
         izz="6.71717299293592E-06" />
     </inertial>
     <visual>
+      <!--<origin
+        xyz="0 0 0"
+        rpy="0 0 0" />-->
+
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="0 -1.5707963267949 3.14159265358979" />
       <geometry>
         <mesh
           filename="package://gingerurdf/meshes/Right_Elbow_X_Link.STL" />
@@ -1833,23 +2136,36 @@
       </geometry>
     </collision>
   </link>
+
+
   <joint
     name="Right_Elbow_X"
     type="revolute">
+    <!--<origin
+      xyz="0 0 0"
+      rpy="0 0 0" />-->
+
+    <!--<origin
+      xyz="0 0 0"
+      rpy="-1.5707963267949 0 -1.5707963267949" />-->
+
     <origin
       xyz="0 0 0"
-      rpy="0 0 0" />
+      rpy="1.5707963267949 0 0" />
+
     <parent
       link="Right_Elbow_Z_Link" />
     <child
       link="Right_Elbow_X_Link" />
     <axis
-      xyz="1 0 0" />
+      xyz="0 0 1" />
     <limit
       effort="30" velocity="1.0" lower="-1.61512768979555" upper="0.6770132168486" />
     <safety_controller
       soft_lower_limit="-1.570796" soft_upper_limit="0.017500" k_position="0" k_velocity="0" />
   </joint>
+
+
   <link
     name="Right_Wrist_Z_Link">
     <inertial>
@@ -1890,23 +2206,37 @@
       </geometry>
     </collision>
   </link>
+
+
   <joint
     name="Right_Wrist_Z"
     type="revolute">
-    <origin
+    <!--<origin
       xyz="0 -0.209559555159009 0.000544952004672944"
-      rpy="0 0 0" />
+      rpy="0 0 0" />-->
+
+    <!--<origin
+      xyz="0 0.209559555159009 0"
+      rpy="0 -1.5707963267949 3.14159265358979" />-->
+
+    <origin
+      xyz="0 0.209559555159009 0"
+      rpy="-1.5707963267949 0 0" />
+      
+
     <parent
       link="Right_Elbow_X_Link" />
     <child
       link="Right_Wrist_Z_Link" />
     <axis
-      xyz="0 -1 0" />
+      xyz="0 0 1" />
     <limit
       effort="30" velocity="1.0" lower="-1.5707963267949" upper="1.5707963267949" />
     <safety_controller
       soft_lower_limit="-1.570796" soft_upper_limit="1.570796" k_position="0" k_velocity="0" />
   </joint>
+
+
   <link
     name="Right_Wrist_X_Link">
     <inertial>
@@ -1924,9 +2254,14 @@
         izz="0" />
     </inertial>
     <visual>
+      <!--<origin
+        xyz="0 0 0"
+        rpy="0 0 0" />-->
+
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="0 -1.5707963267949 1.5707963267949" />
+
       <geometry>
         <mesh
           filename="package://gingerurdf/meshes/Right_Wrist_X_Link.STL" />
@@ -1947,23 +2282,32 @@
       </geometry>
     </collision>
   </link>
+
+
   <joint
     name="Right_Wrist_X"
     type="revolute">
+    <!--<origin
+      xyz="0 0 0"
+      rpy="0 0 0" />-->
+
     <origin
       xyz="0 0 0"
-      rpy="0 0 0" />
+      rpy="0 -1.5707963267949 1.5707963267949" />
+
     <parent
       link="Right_Wrist_Z_Link" />
     <child
       link="Right_Wrist_X_Link" />
     <axis
-      xyz="1 0 0" />
+      xyz="0 0 1" />
     <limit
       effort="30" velocity="1.0" lower="-0.738274273593601" upper="0.738274273593601" />
     <safety_controller
       soft_lower_limit="-0.738274" soft_upper_limit="0.738274" k_position="0" k_velocity="0" />
   </joint>
+
+
   <link
     name="Right_Wrist_Y_Link">
     <inertial>
@@ -2004,12 +2348,19 @@
       </geometry>
     </collision>
   </link>
+
+
   <joint
     name="Right_Wrist_Y"
     type="revolute">
+    <!--<origin
+      xyz="0 0 0"
+      rpy="0 0 0" />-->
+
     <origin
       xyz="0 0 0"
-      rpy="0 0 0" />
+      rpy="0 -1.5707963267949 1.5707963267949" />
+
     <parent
       link="Right_Wrist_X_Link" />
     <child
@@ -2021,6 +2372,8 @@
     <safety_controller
       soft_lower_limit="-0.523598" soft_upper_limit="0.523598" k_position="0" k_velocity="0" />
   </joint>
+
+
   <link
     name="Right_1_1_Link">
     <inertial>
@@ -2061,6 +2414,8 @@
       </geometry>
     </collision>
   </link>
+
+
   <joint
     name="Right_1_1"
     type="revolute">
@@ -2078,6 +2433,7 @@
     <safety_controller
       soft_lower_limit="0" soft_upper_limit="1.256637" k_position="0" k_velocity="0" />
   </joint>
+
   <link
     name="Right_1_2_Link">
     <inertial>
@@ -2118,6 +2474,8 @@
       </geometry>
     </collision>
   </link>
+
+
   <joint
     name="Right_1_2"
     type="revolute">
@@ -2135,6 +2493,8 @@
     <safety_controller
       soft_lower_limit="0" soft_upper_limit="1.256637" k_position="0" k_velocity="0" />
   </joint>
+
+
   <link
     name="Right_2_1_Link">
     <inertial>
